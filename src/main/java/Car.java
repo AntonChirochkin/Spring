@@ -5,7 +5,7 @@ public class Car {
         this.model = model;
     }
 
-    public void start() {
+    public void  start() {
         System.out.println(model + " заведена");
     }
 
