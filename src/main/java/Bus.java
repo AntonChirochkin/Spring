@@ -1,5 +1,5 @@
 import lombok.AllArgsConstructor;
-import  lombok.Data;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Car extends Transport {
-    private BodyType bodyType;
+public class Bus extends Transport {
+    private Size size;
 
     @Override
-    public void  start() {
-        System.out.println("Машина поехала");
+    public void start() {
+        System.out.println("Автобус поехал");
     }
-
 }

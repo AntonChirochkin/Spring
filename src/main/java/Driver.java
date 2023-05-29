@@ -1,39 +1,38 @@
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
-// Создаем класс Driver с полями name и car
 public class Driver {
 
     private String name;
-    private Car car;
+    private Transport transport;
 
-    // Конструктор с параметрами name и car
-    public Driver(String name, Car car) {
+
+    public Driver(String name, Transport transport) {
         this.name = name;
-        this.car = car;
-    }
-
-    // Конструктор с параметром name
-    public Driver(String name) {
-        this.name = name;
-    }
-
-    // Теперь прописываем аннотацию @Autowired для метода setCar,
-    // который будет использоваться для внедрения зависимости Car
-    @Autowired
-    public void setCar(Car car) {
-        this.car = car;
+        this.transport = transport;
     }
 
     public void startTheCar() {
-        System.out.println(name + " сел(а) в " + car.getModel());
-        car.start();
+        System.out.println(name + " сел(а) в " + transport);
+        transport.start();
     }
+
+    @PostConstruct
+    private void init() {
+        System.out.println("Водитель online");
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println("Водитель offline");
+    }
+
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "car=" + car +
-                '}';
+        return "Driver " +
+                "имя - " + name +
+                " транспорт - " + transport;
     }
 }
 
